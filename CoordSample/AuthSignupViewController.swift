@@ -1,11 +1,3 @@
-//
-//  ViewControllerB.swift
-//  CoordSample
-//
-//  Created by David Merino on 12/28/16.
-//  Copyright © 2016 David Merino. All rights reserved.
-//
-
 import UIKit
 
 protocol AuthSignupViewControllerDelegate: class {
@@ -13,7 +5,7 @@ protocol AuthSignupViewControllerDelegate: class {
 }
 
 class AuthSignupViewController: BaseViewController {
-
+    
     weak var delegate:AuthSignupViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -32,5 +24,5 @@ class AuthSignupViewController: BaseViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

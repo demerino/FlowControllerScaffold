@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  CoordSample
-//
-//  Created by David Merino on 12/28/16.
-//  Copyright © 2016 David Merino. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
@@ -16,7 +8,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var rootViewController: AppNavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         self.rootViewController = AppNavigationController()
         self.appFlow = AppFlowController(navigationController: self.rootViewController!)
         self.rootViewController?.appNavigationControllerDelegate = self.appFlow
@@ -46,7 +37,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

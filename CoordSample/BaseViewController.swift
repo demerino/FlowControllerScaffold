@@ -1,18 +1,9 @@
-//
-//  BaseViewController.swift
-//  CoordSample
-//
-//  Created by David Merino on 12/31/16.
-//  Copyright © 2016 David Merino. All rights reserved.
-//
-
 import UIKit
-
 
 class BaseViewController: UIViewController {
     
     var buttons = [UIButton]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

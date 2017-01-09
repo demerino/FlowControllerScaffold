@@ -1,14 +1,3 @@
-// AppFlowController - Root flow controller (brain)
-// StartupFlowController - loading screen, manifest download, setup models, download any assets, check state (logged in, new user, etc)
-// AuthFlowController - (authenticate)
-// WelcomeFlowController - (welcome tutorial)
-// MainFlowController - (Home Screen Feed, Tab bars/Navigation)
-// SettingsFlowController - settings modal stuff
-// CreateProjectFlowController
-// UploadAttachmentFlowController
-// ViewProjectFlowController
-// ViewAttachmentFlowController
-
 import UIKit
 
 class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, StartupFlowControllerDelegate, AppNavigationControllerDelegate {
@@ -71,7 +60,6 @@ class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, Startup
     
     func showContent() {
         //make sure you show the next flow!
-        
     }
 }
 

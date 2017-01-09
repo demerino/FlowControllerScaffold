@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  CoordSample
-//
-//  Created by David Merino on 12/28/16.
-//  Copyright © 2016 David Merino. All rights reserved.
-//
-
 import UIKit
 
 protocol StartupViewControllerDelegate: class {
@@ -25,7 +17,6 @@ class StartupViewController: BaseViewController {
         startupButton.addTarget(self, action: #selector(StartupViewController.completeButtonTap(_:)), for: .touchUpInside)
         let welcomeButton = self.addButton(title: "Show Welcome")
         welcomeButton.addTarget(self, action: #selector(StartupViewController.welcomeButtonTap(_:)), for: .touchUpInside)
-
     }
     
     func completeButtonTap(_ button: UIButton) {
