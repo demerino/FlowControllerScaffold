@@ -1,18 +1,18 @@
 import UIKit
 
-class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, StartupFlowControllerDelegate, AppNavigationControllerDelegate {
+class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, StartupFlowControllerDelegate, AppNavigationControllerDelegate, MainFlowControllerDelegate {
     
     // MARK: 
     var initialAppearance = false
     
-    override init(navigationController:UINavigationController) {
-        super.init(navigationController: navigationController)
-        navigationController.navigationBar.barTintColor = UIColor.red
-        navigationController.setNavigationBarHidden(true, animated: false)
+    override init(appNavigationController:AppNavigationController) {
+        super.init(appNavigationController: appNavigationController)
+        appNavigationController.navigationBar.barTintColor = UIColor.red
+        appNavigationController.setNavigationBarHidden(true, animated: false)
     }
     
     public func start() {
-        let flow = StartupFlowController(navigationController: self.navigationController)
+        let flow = StartupFlowController(appNavigationController: self.appNavigationController)
         flow.delegate = self
         self.childFlows.append(flow)
         flow.start()
@@ -21,7 +21,7 @@ class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, Startup
     // MARK: Auth Flow
     
     public func startAuthFlow() {
-        let authFlow = AuthFlowController(navigationController: self.navigationController)
+        let authFlow = AuthFlowController(appNavigationController: self.appNavigationController)
         authFlow.delegate = self
         self.childFlows.append(authFlow)
         authFlow.start()
@@ -41,8 +41,8 @@ class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, Startup
     }
     
     func startMainFlow() {
-        let mainFlow = MainFlowController(navigationController: self.navigationController)
-        //mainFlow.delegate = self
+        let mainFlow = MainFlowController(appNavigationController: self.appNavigationController)
+        mainFlow.delegate = self
         self.childFlows.append(mainFlow)
         mainFlow.start()
     }

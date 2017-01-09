@@ -7,19 +7,28 @@ extension Array {
 }
 
 class BaseFlowController: NSObject {
-    var navigationController:UINavigationController!
+
+    static let defaultFlowAnimationDuration = 0.3
+
+    var appNavigationController:AppNavigationController!
     var childFlows:Array = [Any]()
     
-    public init(navigationController:UINavigationController) {
-        self.navigationController = navigationController
+    public init(appNavigationController:AppNavigationController) {
+        self.appNavigationController = appNavigationController
         super.init()
     }
     
+    //kCATransitionReveal = push backwards (like a pop)
+    //kCATransitionMoveIn = push but over the top (doesn't move current view controller)
+    //kCATransitionFade = fade
+    //kCATransitionPush = push
+    
     class func fadeAnimation() -> CATransition {
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = defaultFlowAnimationDuration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         transition.type = kCATransitionFade
         return transition
     }
-    
+
 }

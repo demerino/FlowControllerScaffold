@@ -6,22 +6,17 @@ protocol StartupFlowControllerDelegate: class {
 
 class StartupFlowController: BaseFlowController, StartupViewControllerDelegate, WelcomeViewControllerDelegate {
 
-    
     weak var delegate:StartupFlowControllerDelegate?
-    
-    override init(navigationController:UINavigationController) {
-        super.init(navigationController: navigationController)
-    }
     
     // MARK: Start
 
     public func start() {
-        self.navigationController.setNavigationBarHidden(false, animated: true)
+        self.appNavigationController.setNavigationBarHidden(false, animated: true)
         let startVC = StartupViewController()
         startVC.delegate = self
-        self.navigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
-        self.navigationController.pushViewController(startVC, animated: false)
-        self.navigationController.viewControllers = [startVC]
+        self.appNavigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
+        self.appNavigationController.pushViewController(startVC, animated: false)
+        self.appNavigationController.viewControllers = [startVC]
     }
     
     // MARK: Startup
@@ -35,8 +30,8 @@ class StartupFlowController: BaseFlowController, StartupViewControllerDelegate, 
     func showWelcome(sender: StartupViewController) {
         let vc = WelcomeViewController()
         vc.delegate = self
-        self.navigationController.setNavigationBarHidden(true, animated: true)
-        self.navigationController.pushViewController(vc, animated: false)
+        self.appNavigationController.setNavigationBarHidden(true, animated: true)
+        self.appNavigationController.pushViewController(vc, animated: false)
     }
     
     func welcomeCompleted(sender: WelcomeViewController) {

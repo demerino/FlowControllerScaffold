@@ -1,17 +1,19 @@
 import UIKit
 
+protocol MainFlowControllerDelegate: class {
+    //TODO
+}
+
 class MainFlowController: BaseFlowController {
 
-    
-    override init(navigationController:UINavigationController) {
-        super.init(navigationController: navigationController)
-    }
-    
+    weak var delegate:MainFlowControllerDelegate?
+
     public func start() {
         let startVC = MainTabBarViewController()
-        self.navigationController.setNavigationBarHidden(true, animated: false)
-        self.navigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
-        self.navigationController.pushViewController(startVC, animated: false)
-        self.navigationController.viewControllers = [startVC]
+        self.appNavigationController.setNavigationBarHidden(true, animated: false)
+        self.appNavigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
+        self.appNavigationController.pushViewController(startVC, animated: false)
+        self.appNavigationController.viewControllers = [startVC]
     }
+    
 }

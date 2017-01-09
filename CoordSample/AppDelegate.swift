@@ -9,7 +9,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         self.rootViewController = AppNavigationController()
-        self.appFlow = AppFlowController(navigationController: self.rootViewController!)
+        self.appFlow = AppFlowController(appNavigationController: self.rootViewController!)
         self.rootViewController?.appNavigationControllerDelegate = self.appFlow
         self.window?.rootViewController = self.rootViewController
         self.window?.makeKeyAndVisible()
