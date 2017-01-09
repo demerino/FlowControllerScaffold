@@ -17,9 +17,9 @@ class MainFlowController: BaseFlowController {
     
     public func start() {
         let startVC = MainTabBarViewController()
-        //startVC.delegate = self
-        navigationController.present(startVC, animated: false) {
-            //nil
-        }
+        self.navigationController.setNavigationBarHidden(true, animated: false)
+        self.navigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
+        self.navigationController.pushViewController(startVC, animated: false)
+        self.navigationController.viewControllers = [startVC]
     }
 }

@@ -16,32 +16,26 @@ class StartupFlowController: BaseFlowController, StartupViewControllerDelegate, 
 
     
     weak var delegate:StartupFlowControllerDelegate?
-    var flowNavigationController:UINavigationController!
     
     override init(navigationController:UINavigationController) {
         super.init(navigationController: navigationController)
-        self.flowNavigationController = UINavigationController()
-        self.flowNavigationController.navigationBar.barTintColor = UIColor.brown
-        navigationController.present(self.flowNavigationController, animated: false) {
-            //nil
-        }
     }
     
     // MARK: Start
 
     public func start() {
-        self.flowNavigationController.setNavigationBarHidden(false, animated: false)
+        self.navigationController.setNavigationBarHidden(false, animated: true)
         let startVC = StartupViewController()
         startVC.delegate = self
-        self.flowNavigationController.pushViewController(startVC, animated: false)
+        self.navigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
+        self.navigationController.pushViewController(startVC, animated: false)
+        self.navigationController.viewControllers = [startVC]
     }
     
     // MARK: Startup
     
     func startupCompleted(sender: StartupViewController) {
-        self.flowNavigationController.dismiss(animated: false) {
-            self.delegate?.startupFlowControllerFinished(sender: self)
-        }
+        self.delegate?.startupFlowControllerFinished(sender: self)
     }
     
     // MARK: Welcome View
@@ -49,14 +43,12 @@ class StartupFlowController: BaseFlowController, StartupViewControllerDelegate, 
     func showWelcome(sender: StartupViewController) {
         let vc = WelcomeViewController()
         vc.delegate = self
-        self.flowNavigationController.setNavigationBarHidden(true, animated: false)
-        self.flowNavigationController.pushViewController(vc, animated: false)
+        self.navigationController.setNavigationBarHidden(true, animated: true)
+        self.navigationController.pushViewController(vc, animated: false)
     }
     
     func welcomeCompleted(sender: WelcomeViewController) {
-        self.flowNavigationController.dismiss(animated: false) {
-            self.delegate?.startupFlowControllerFinished(sender: self)
-        }
+        self.delegate?.startupFlowControllerFinished(sender: self)
     }
     
     

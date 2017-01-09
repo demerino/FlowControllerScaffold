@@ -15,16 +15,10 @@ protocol AuthFlowControllerDelegate: class {
 class AuthFlowController: BaseFlowController, AuthLoginViewControllerDelegate, AuthSignupViewControllerDelegate {
     
     weak var delegate:AuthFlowControllerDelegate?
-    var flowNavigationController:UINavigationController!
     
     override init(navigationController:UINavigationController) {
         super.init(navigationController: navigationController)
 
-        self.flowNavigationController = UINavigationController()
-        self.flowNavigationController.navigationBar.barTintColor = UIColor.brown
-        navigationController.present(self.flowNavigationController, animated: false) {
-            //Do nothing
-        }
     }
     
     public func start() {
@@ -32,30 +26,29 @@ class AuthFlowController: BaseFlowController, AuthLoginViewControllerDelegate, A
     }
     
     func showLogin() {
+        navigationController.setNavigationBarHidden(false, animated: true)
         let startVC = AuthLoginViewController()
         startVC.delegate = self
-        self.flowNavigationController.pushViewController(startVC, animated: false)
+        self.navigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
+        self.navigationController.pushViewController(startVC, animated: false)
+        self.navigationController.viewControllers = [startVC]
     }
     
     public func showSignup() {
         let startVC = AuthSignupViewController()
         startVC.delegate = self
-        self.flowNavigationController.pushViewController(startVC, animated: true)
+        self.navigationController.pushViewController(startVC, animated: true)
     }
     
     public func authFlowCompleted(sender: AuthLoginViewController) {
-        self.flowNavigationController.dismiss(animated: false) {
-            self.delegate?.authFlowControllerFinished(sender: self)
-        }
+        self.delegate?.authFlowControllerFinished(sender: self)
     }
     
     internal func authFlowShowSignup(sender: AuthLoginViewController) {
         self.showSignup()
     }
     public func signupCompleted(sender: AuthSignupViewController) {
-        self.flowNavigationController.dismiss(animated: false) {
-            self.delegate?.authFlowControllerFinished(sender: self)
-        }
+        self.delegate?.authFlowControllerFinished(sender: self)
     }
     
 }

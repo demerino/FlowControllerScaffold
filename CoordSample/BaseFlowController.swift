@@ -23,4 +23,11 @@ class BaseFlowController: NSObject {
         super.init()
     }
     
+    class func fadeAnimation() -> CATransition {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionFade
+        return transition
+    }
+    
 }
