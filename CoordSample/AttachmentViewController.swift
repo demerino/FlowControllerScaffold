@@ -1,7 +1,6 @@
 import UIKit
 
 protocol AttachmentViewControllerDelegate: class {
-    //func startupCompleted(sender: ViewController)
 }
 
 class AttachmentViewController: BaseViewController {
@@ -17,6 +16,6 @@ class AttachmentViewController: BaseViewController {
     }
     
     func primaryButtonTap(_ button: UIButton) {
-        //self.delegate?.startupCompleted(sender: self)
+        print("TAP")
     }
 }

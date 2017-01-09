@@ -1,7 +1,6 @@
 import UIKit
 
 protocol FeedViewControllerDelegate: class {
-    //func startupCompleted(sender: ViewController)
 }
 
 class FeedViewController: BaseViewController {
@@ -17,6 +16,6 @@ class FeedViewController: BaseViewController {
     }
     
     func primaryButtonTap(_ button: UIButton) {
-        //self.delegate?.startupCompleted(sender: self)
+        print("TAP")
     }
 }

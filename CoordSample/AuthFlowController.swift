@@ -16,9 +16,8 @@ class AuthFlowController: BaseFlowController, AuthLoginViewControllerDelegate, A
         self.appNavigationController.setNavigationBarHidden(false, animated: true)
         let startVC = AuthLoginViewController()
         startVC.delegate = self
-        self.appNavigationController.view.layer.add(BaseFlowController.fadeAnimation(), forKey: nil)
-        self.appNavigationController.pushViewController(startVC, animated: false)
-        self.appNavigationController.viewControllers = [startVC]
+        self.appNavigationController.view.layer.add(BaseFlowController.flowFadeTransition(), forKey: nil)
+        self.appNavigationController.setViewControllers([startVC], animated: false)
     }
     
     public func showSignup() {

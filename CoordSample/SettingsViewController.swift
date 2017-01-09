@@ -1,7 +1,6 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate: class {
-    //func startupCompleted(sender: ViewController)
 }
 
 class SettingsViewController: BaseViewController {
@@ -17,6 +16,6 @@ class SettingsViewController: BaseViewController {
     }
     
     func primaryButtonTap(_ button: UIButton) {
-        //self.delegate?.startupCompleted(sender: self)
+        print("TAP")
     }
 }

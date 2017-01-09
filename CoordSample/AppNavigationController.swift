@@ -7,9 +7,9 @@ protocol AppNavigationControllerDelegate: class {
 class AppNavigationController: UINavigationController {
     
     weak var appNavigationControllerDelegate:AppNavigationControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -18,8 +18,4 @@ class AppNavigationController: UINavigationController {
         }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }

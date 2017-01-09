@@ -5,13 +5,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var appFlow: AppFlowController?
-    var rootViewController: AppNavigationController?
+    var appRootViewController: AppNavigationController?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        self.rootViewController = AppNavigationController()
-        self.appFlow = AppFlowController(appNavigationController: self.rootViewController!)
-        self.rootViewController?.appNavigationControllerDelegate = self.appFlow
-        self.window?.rootViewController = self.rootViewController
+        self.appRootViewController = AppNavigationController()
+        self.appFlow = AppFlowController(appNavigationController: self.appRootViewController!)
+        self.appRootViewController?.appNavigationControllerDelegate = self.appFlow
+        self.window?.rootViewController = self.appRootViewController
         self.window?.makeKeyAndVisible()
         return true
     }

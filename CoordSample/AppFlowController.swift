@@ -1,50 +1,22 @@
 import UIKit
 
+/*!
+ @brief Top level flows should clear the AppNavigationController stack when starting
+*/
 class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, StartupFlowControllerDelegate, AppNavigationControllerDelegate, MainFlowControllerDelegate {
     
-    // MARK: 
     var initialAppearance = false
     
+    // MARK: AppFlowController methods
+
     override init(appNavigationController:AppNavigationController) {
         super.init(appNavigationController: appNavigationController)
         appNavigationController.navigationBar.barTintColor = UIColor.red
         appNavigationController.setNavigationBarHidden(true, animated: false)
     }
     
-    public func start() {
-        let flow = StartupFlowController(appNavigationController: self.appNavigationController)
-        flow.delegate = self
-        self.childFlows.append(flow)
-        flow.start()
-    }
-    
-    // MARK: Auth Flow
-    
-    public func startAuthFlow() {
-        let authFlow = AuthFlowController(appNavigationController: self.appNavigationController)
-        authFlow.delegate = self
-        self.childFlows.append(authFlow)
-        authFlow.start()
-    }
-    
-    public func startupFlowControllerFinished(sender: StartupFlowController) {
-        self.childFlows.removeObject(obj: sender)
-        //TODO if logged in then go to Main
-        self.startAuthFlow()
-    }
-    
-    // MARK: Auth Flow
-    
-    func authFlowControllerFinished(sender: AuthFlowController) {
-        self.childFlows.removeObject(obj: sender)
-        self.startMainFlow()
-    }
-    
-    func startMainFlow() {
-        let mainFlow = MainFlowController(appNavigationController: self.appNavigationController)
-        mainFlow.delegate = self
-        self.childFlows.append(mainFlow)
-        mainFlow.start()
+    func start() {
+        startStartupFlow()
     }
     
     // MARK: App Navigation
@@ -56,10 +28,48 @@ class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, Startup
         }
     }
     
+    // MARK: Startup Flow
+    
+    func startStartupFlow() {
+        let flow = StartupFlowController(appNavigationController: self.appNavigationController)
+        flow.delegate = self
+        self.childFlows.append(flow)
+        flow.start()
+    }
+    
+    func startupFlowControllerFinished(sender: StartupFlowController) {
+        self.childFlows.removeObject(obj: sender)
+        //TODO if logged in then go to Main instead
+        self.startAuthFlow()
+    }
+    
+    // MARK: Auth Flow
+    
+    func startAuthFlow() {
+        let authFlow = AuthFlowController(appNavigationController: self.appNavigationController)
+        authFlow.delegate = self
+        self.childFlows.append(authFlow)
+        authFlow.start()
+    }
+    
+    func authFlowControllerFinished(sender: AuthFlowController) {
+        self.childFlows.removeObject(obj: sender)
+        self.startMainFlow()
+    }
+    
+    // MARK: Main Flow
+
+    func startMainFlow() {
+        let mainFlow = MainFlowController(appNavigationController: self.appNavigationController)
+        mainFlow.delegate = self
+        self.childFlows.append(mainFlow)
+        mainFlow.start()
+    }
+    
     // MARK: Content
     
     func showContent() {
-        //make sure you show the next flow!
+        //TODO fallback to content and analyze + cleanup flows
     }
 }
 

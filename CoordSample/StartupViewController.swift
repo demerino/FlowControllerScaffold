@@ -26,10 +26,6 @@ class StartupViewController: BaseViewController {
     func welcomeButtonTap(_ button: UIButton) {
         self.delegate?.showWelcome(sender: self)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
 }
 

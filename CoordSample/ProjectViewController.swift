@@ -1,7 +1,6 @@
 import UIKit
 
 protocol ProjectViewControllerDelegate: class {
-    //func startupCompleted(sender: ViewController)
 }
 
 class ProjectViewController: BaseViewController {
@@ -17,6 +16,6 @@ class ProjectViewController: BaseViewController {
     }
     
     func primaryButtonTap(_ button: UIButton) {
-        //self.delegate?.startupCompleted(sender: self)
+        print("TAP")
     }
 }

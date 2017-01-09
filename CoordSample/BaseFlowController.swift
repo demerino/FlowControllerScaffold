@@ -18,12 +18,13 @@ class BaseFlowController: NSObject {
         super.init()
     }
     
+    //Transition Notes
     //kCATransitionReveal = push backwards (like a pop)
     //kCATransitionMoveIn = push but over the top (doesn't move current view controller)
     //kCATransitionFade = fade
     //kCATransitionPush = push
     
-    class func fadeAnimation() -> CATransition {
+    class func flowFadeTransition() -> CATransition {
         let transition = CATransition()
         transition.duration = defaultFlowAnimationDuration
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
