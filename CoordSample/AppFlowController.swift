@@ -21,13 +21,6 @@ class AppFlowController: BaseFlowController, AuthFlowControllerDelegate, Startup
     
     // MARK: App Navigation
     
-    func appNavigationControllerDidAppear(sender: AppNavigationController) {
-        if (!self.initialAppearance) {
-            self.initialAppearance = true
-            self.start()
-        }
-    }
-    
     // MARK: Startup Flow
     
     func startStartupFlow() {

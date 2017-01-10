@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.appRootViewController?.appNavigationControllerDelegate = self.appFlow
         self.window?.rootViewController = self.appRootViewController
         self.window?.makeKeyAndVisible()
+        self.appFlow?.start()
         return true
     }
 
